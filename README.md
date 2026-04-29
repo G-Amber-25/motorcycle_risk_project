@@ -1,56 +1,108 @@
-# Google Slides Link Below
-https://docs.google.com/presentation/d/1JFVPVbKtxCN6o2Gz7wGDBcwucdpTy80m9gMJ7ckju-Q/edit?slide=id.g3b5b789cbf1_0_303#slide=id.g3b5b789cbf1_0_303
+# 🏍️ Modeling Motorcycle Injury Severity with Southern California Crash Data
 
-# ANA 699 Capstone Project  
-Motorcycle Crash Risk Analysis
+A machine learning analysis identifying factors associated with severe and fatal motorcycle crash outcomes across four Southern California counties, using police-reported crash records from 2021–2023.
 
-## Overview  
-This repository contains materials for the ANA 699 analytic capstone project. The project analyzes motorcycle crash data from Southern California to examine injury severity, contributing factors, and spatial risk patterns using event-level crash records.
+> **M.S. Data Science Capstone Thesis** | National University | ANA 699 | March 2026
 
-The analysis uses official crash data derived from California’s Statewide Integrated Traffic Records System (SWITRS) and accessed through the Transportation Injury Mapping System (TIMS).
+---
 
-## Project Questions  
-- What factors are associated with motorcycle crash injury severity?  
-- How does alcohol involvement relate to crash outcomes?  
-- Are there spatial patterns or locations with consistently higher motorcycle crash risk?  
+## 📋 Project Overview
 
-## Data Source  
-The data used in this project were obtained from the Transportation Injury Mapping System (TIMS), a public crash data platform developed by the UC Berkeley Safe Transportation Research and Education Center (SafeTREC).
+Motorcycles account for roughly 3% of registered vehicles in California but represent a disproportionate share of severe and fatal traffic injuries statewide. This study models motorcycle crash injury severity as a function of observable crash conditions across behavioral, environmental, roadway, spatial, and temporal domains.
 
-TIMS provides access to motorcycle crash records derived from California’s Statewide Integrated Traffic Records System (SWITRS), the official statewide database of police-reported traffic collisions. SWITRS data originate from California Highway Patrol and local law enforcement collision reports and are updated on a regular basis.
+Three machine learning models were applied and compared:
+- **Logistic Regression** (multinomial)
+- **Random Forest**
+- **XGBoost**
 
-Motorcycle crash records were accessed using the TIMS Motorcycle Crash Map Viewer and filtered by county, crash severity, alcohol involvement, and year. The resulting dataset contains event-level crash records for multiple Southern California counties, including injury severity outcomes, alcohol involvement indicators, roadway and environmental conditions, temporal variables, and geocoded latitude and longitude.
+SHAP (SHapley Additive exPlanations) values were used to interpret model predictions and rank feature importance across injury severity classes.
 
-## Data  
-Motorcycle crash records from the following Southern California counties were combined into a single dataset:
-- Los Angeles  
-- Riverside  
-- San Bernardino  
-- San Diego  
+---
 
-The combined dataset is stored as:
+## 🔍 Research Questions
 
-`SoCal_Motorcycle_Crashes.csv`
+- Which observable behavioral, environmental, and roadway characteristics are associated with increased odds of severe or fatal motorcycle injury in Southern California?
+- Are injury severity associations consistent across temporal and roadway contexts, or do risk patterns differ by time of day, day of week, and roadway type?
 
-Each row represents an individual motorcycle crash.
+---
 
-## Methods  
-- Data cleaning and preprocessing  
-- Exploratory data analysis  
-- Injury severity classification  
-- Logistic regression and tree-based modeling  
-- Spatial analysis and hotspot identification  
+## 📊 Dataset
 
-## Repository Structure  
-SoCal_Motorcycle_Crashes.csv   Combined motorcycle crash dataset  
-README.md                     Project documentation  
+| Detail | Info |
+|---|---|
+| **Source** | Transportation Injury Mapping System (TIMS) / SWITRS |
+| **Coverage** | Los Angeles, Riverside, San Bernardino, San Diego counties |
+| **Years** | 2021–2023 |
+| **Records** | ~19,700 motorcycle crash events |
+| **Unit** | Individual crash (event-level) |
 
-## Tools  
-- Python (pandas, scikit-learn, geopandas)  
-- Data visualization and GIS libraries  
+**Severity Classification:** California's KABCO scale
+- **K** — Fatal injury
+- **A** — Incapacitating injury
+- **B** — Visible injury
+- **C** — Complaint of pain
+- *(Property-damage-only crashes excluded from modeling)*
 
-## Academic Context  
-This project is part of ANA 699: Analytic Capstone Project in the M.S. in Data Science program.
+> 🔗 Data is publicly available through [TIMS](https://tims.berkeley.edu/) — free account registration required to download.
 
-## Team  
-ANA 699 Capstone Group
+---
+
+## 🛠️ Methods
+
+| Step | Detail |
+|---|---|
+| Data cleaning & preprocessing | Standardization, missing data treatment, feature engineering |
+| Exploratory data analysis | Descriptive statistics, distribution analysis |
+| Modeling | Multinomial Logistic Regression, Random Forest, XGBoost |
+| Validation | Train/test/validation split + k-fold cross-validation |
+| Interpretability | SHAP global and local feature importance |
+| Imbalance handling | SMOTE (Synthetic Minority Oversampling Technique) |
+
+**Tools:** Python (pandas, scikit-learn, XGBoost, SHAP, geopandas, matplotlib)
+
+---
+
+## 📈 Key Findings
+
+- **Broadside collision geometry**, **nighttime exposure**, and **alcohol involvement** were the strongest predictors of severe and fatal outcomes across all three models
+- **Tow-away status** emerged as one of the top predictors of injury severity
+- Random Forest and XGBoost performed comparably (macro ROC-AUC ~0.69); no single model was declared a clear winner
+- Logistic Regression provided interpretable baseline comparisons but had lower discriminative performance
+- Younger riders (18–30) showed elevated fatality odds across crash configurations
+- Geographic variation across counties suggested localized risk patterns worth further investigation
+
+---
+
+## 📁 Repository Structure
+
+```
+├── README.md                        # Project overview 
+├── SoCal_Motorcycle_Crashes.csv     # Combined crash dataset (4 counties)
+├── notebooks/                       # Python analysis notebooks
+└── thesis/                          # Full written thesis (PDF)
+```
+
+---
+
+## 👥 Team
+
+This project was completed as a collaborative M.S. capstone thesis:
+
+- Jeremiah Snipes
+- Amber Garcia
+- Ed Baek
+- Ryan Neighbor
+
+**Thesis Advisors:** Dr. Mario Missakian, National University & Dr. Wen Cheng, P.E., Cal Poly Pomona  
+**Industry Advisor:** Mr. Brian Huynh, Chief Traffic Records Officer, California Office of Traffic Safety
+
+🔗 Original repository: [jeremiahsnipes/motorcycle_risk_project]
+(https://github.com/jeremiahsnipes/motorcycle_risk_project)
+
+---
+
+## 🎓 Academic Context
+
+**Program:** M.S. in Data Science, National University School of Engineering & Computing  
+**Course:** ANA 699 – Analytic Capstone Project  
+**Submitted:** March 2026

@@ -31,7 +31,7 @@ SHAP (SHapley Additive exPlanations) values were used to interpret model predict
 | Detail | Info |
 |---|---|
 | **Source** | Transportation Injury Mapping System (TIMS) / SWITRS |
-| **Coverage** | Los Angeles, Riverside, San Bernardino, San Diego counties |
+| **Coverage** | Los Angeles, Riverside, San Bernardino, San Diego, Orange counties |
 | **Years** | 2021–2023 |
 | **Records** | ~19,700 motorcycle crash events |
 | **Unit** | Individual crash (event-level) |

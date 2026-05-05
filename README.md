@@ -76,10 +76,10 @@ SHAP (SHapley Additive exPlanations) values were used to interpret model predict
 ## 📁 Repository Structure
 
 ```
-├── README.md                        # Project overview
-├── data/                            # Southern California crash dataset
-├── Notebook/                        # Python analysis notebooks
-└── thesis/                          # Full written thesis (PDF)
+├── README.md                                                       # Project overview
+├── data/                                                           # Southern California crash dataset
+├── Notebook/                                                       # Python analysis notebooks
+└── motorcycle_injury_severity_thesis.pdf/                          # Full written thesis (PDF)
 ```
 
 ---
